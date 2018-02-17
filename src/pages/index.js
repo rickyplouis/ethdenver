@@ -29,6 +29,27 @@ function textSelected(userSelection){
   return userSelection.toString().length > 0
 }
 
+function annotate(evt){
+  evt.preventDefault()
+  var userSelection = window.getSelection().getRangeAt(0);
+  if (clickedOnPopup(evt)){
+    if (evt.target.id === 'submitAnnotation'){
+      console.log('clicked submit');
+    } else if (evt.target.id === 'cancel') {
+      console.log('clicked cancel');
+    } else if (evt.target.id === 'userInput'){
+      console.log('clicked user input');
+    }
+  } else if (textSelected(userSelection)){
+    highlightSelection(userSelection)
+  } else {
+    return Promise.all([
+      removePopup(),
+      removeHighlight()
+    ])
+  }
+}
+
 
 class Index extends React.Component {
 
@@ -41,29 +62,9 @@ class Index extends React.Component {
     console.log('props', props);
   }
 
-
-  annotate = (evt) => {
-    evt.preventDefault()
-    console.log('evt.target.id', evt.target.id);
-    var userSelection = window.getSelection().getRangeAt(0);
-    console.log('userSelection', userSelection.toString());
-    if (clickedOnPopup(evt)){
-      console.log('do some ajax stuff here');
-    } else if (textSelected(userSelection)){
-      console.log('highlight text here');
-      highlightSelection(userSelection)
-    } else {
-      console.log('remove popup here');
-      return Promise.all([
-        removePopup(),
-        removeHighlight()
-      ])
-    }
-  }
-
   renderEthWhitepaper = () => {
     return (
-      <div onMouseUp={(evt) => this.annotate(evt)}>
+      <div onMouseUp={(evt) => annotate(evt)}>
         <h2>
           Ethereum Whitepaper
         </h2>

@@ -147,6 +147,9 @@ function makeButton(buttonText, id){
   return button
 }
 
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
 
 function addPopup(container){
   var popup = makeElement("span")
@@ -159,7 +162,7 @@ function addPopup(container){
   popuptext.append(makeButton('Submit Annotation', 'submitAnnotation'))
   popuptext.append(makeButton('Cancel', 'cancel'))
   popup.append(popuptext)
-  container.append(popup)
+  insertAfter(container, popup)
 }
 
 /**
