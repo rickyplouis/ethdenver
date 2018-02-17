@@ -14,6 +14,18 @@ export function removeHighlight(){
   })
 }
 
+export function saveHighlight(){
+  var highlights = document.getElementsByClassName("highlightedText")
+  Array.prototype.map.call(highlights, function(highlight){
+    highlight.setAttribute(
+      'id',
+      'savedHighlight'
+    )
+    highlight.removeAttribute('class')
+  })
+
+}
+
 export function removePopup(){
   let element = document.getElementsByClassName("popup")[0];
   let text = document.getElementsByClassName("popuptext")[0]
@@ -23,6 +35,14 @@ export function removePopup(){
     //delete text
     //delete element;
   }
+}
+
+/**
+ * Checks the id of the item that's clicked on to ensure
+ * it is within the popup
+ */
+export function clickedOnPopup(evt){
+  return evt.target.id && (evt.target.id === 'userInput' || evt.target.id === 'submitAnnotation' || evt.target.id === 'cancel')
 }
 
 /**

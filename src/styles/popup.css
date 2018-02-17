@@ -10,7 +10,7 @@
     visibility: hidden;
     width: 200px;
     height: 200px;
-    background-color: rgba(70, 70, 70, 0.6);
+    background-color: rgba(70, 70, 70, 0.8);
     color: black;
     display: inline-grid;
     text-align: center;
@@ -63,9 +63,14 @@
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
+    color: white;
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s
+}
+
+.savedHighlight {
+  background-color: yellow;
 }
 
 /* Add animation (fade in the popup) */
