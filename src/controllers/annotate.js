@@ -14,17 +14,25 @@ export function removeHighlight(){
   })
 }
 
-export function saveHighlight(){
+function showAnnotation(annotationText){
+  console.log('showAnnotation', annotationText);
+}
+
+export function saveHighlight(annotationText){
   var highlights = document.getElementsByClassName("highlightedText")
   Array.prototype.map.call(highlights, function(highlight){
     highlight.setAttribute(
       'id',
       'savedHighlight'
     )
+    highlight.addEventListener('mouseover', function(){
+      showAnnotation(annotationText)
+    })
     highlight.removeAttribute('class')
   })
 
 }
+
 
 export function removePopup(){
   let element = document.getElementsByClassName("popup")[0];

@@ -54,10 +54,11 @@ class Index extends React.Component {
     var userSelection = window.getSelection().getRangeAt(0);
     if (clickedOnPopup(evt)){
       if (evt.target.id === 'submitAnnotation'){
-        this.addSelectedText(userSelection.toString())
-        console.log('selectedText', this.state.selectedText);
+        var annotation = document.getElementById('userInput').value
+        var selection = userSelection.toString()
+        this.addSelectedText({selection: userSelection.toString(), annotation: annotation})
         return Promise.all([
-          saveHighlight(),
+          saveHighlight(annotation),
           removePopup()
         ])
       } else if (evt.target.id === 'cancel') {
