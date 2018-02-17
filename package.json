@@ -13,6 +13,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "gatsby": "^1.6.5",
+    "gatsby-cli": "^1.1.40",
     "gatsby-link": "^1.6.5",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
