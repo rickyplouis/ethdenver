@@ -14,19 +14,41 @@ export function removeHighlight(){
   })
 }
 
-function showAnnotation(annotationText){
+function insertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function showAnnotation(annotationText, highlightContainer){
   console.log('showAnnotation', annotationText);
+
+  var popup = makeElement("span")
+  var popuptext = makeElement("span", annotationText)
+
+  popup.classList.add('popup');
+  popuptext.classList.add("popuptext", "show", "annotationPopup")
+  popup.append(popuptext)
+  insertAfter(highlightContainer, popup)
+}
+
+function hideAnnotation(){
+  console.log('hiding annotation');
+  var annotationPopup = document.getElementsByClassName('annotationPopup')[0]
+  annotationPopup.classList.remove("show")
+  annotationPopup.classList.add("hide")
 }
 
 export function saveHighlight(annotationText){
   var highlights = document.getElementsByClassName("highlightedText")
   Array.prototype.map.call(highlights, function(highlight){
     highlight.setAttribute(
-      'id',
+      'class',
       'savedHighlight'
     )
     highlight.addEventListener('mouseover', function(){
-      showAnnotation(annotationText)
+      showAnnotation(annotationText, highlight)
+    })
+    highlight.addEventListener('mouseout', function(){
+      hideAnnotation()
     })
     highlight.removeAttribute('class')
   })
@@ -173,10 +195,6 @@ function makeButton(buttonText, id){
   var button = makeElement('button', buttonText)
   button.setAttribute('id', id)
   return button
-}
-
-function insertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
 function addPopup(container){
