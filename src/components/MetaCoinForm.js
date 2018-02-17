@@ -26,7 +26,6 @@ class MetaCoinForm extends Component {
       formData: { recipient, amount }
     } = this.props
     e.preventDefault()
-
     MetaCoin.sendCoin.sendTransaction(recipient, amount, {from})
       .then(txHash => {
         const getReceipt = () => web3.eth.getTransactionReceiptAsync(txHash)
