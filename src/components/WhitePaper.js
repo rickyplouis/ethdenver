@@ -85,7 +85,7 @@ class Whitepaper extends React.Component {
       pushTransaction,
       contracts: { MetaCoin },
     } = this.props
-    const from = "0x627306090abaB3A6e1400e9345bC60c78a8BEf57"
+    const from = "0xf17f52151EbEF6C7334FAD080c5704D77216b732"
     const recipient = "0xf17f52151EbEF6C7334FAD080c5704D77216b732"
     const amount = "3"
     e.preventDefault()
