@@ -36,15 +36,8 @@ class Index extends React.Component {
   render(){
     return (
       <main>
-        <div>
-          Current user: {this.props.accounts[0]}
-        </div>
         <Whitepaper/>
-        <h2>Transfer MetaCoins</h2>
         <hr />
-        <CoinbaseLabel />
-        <MetaCoinBalance />
-        <MetaCoinForm />
         <TransactionsList />
       </main>
     )

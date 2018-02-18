@@ -17,6 +17,11 @@ const Paper = (props) => (
     <h2>
       Ethereum Whitepaper
     </h2>
+    <div>
+      <strong>
+        Highlight some words below:
+      </strong>
+    </div>
     <hr/>
     {props.children}
   </span>

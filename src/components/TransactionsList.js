@@ -3,14 +3,12 @@ import { connect } from 'react-redux'
 
 const TransactionsList = ({ transactions }) => (
   <ol>
+    <h2>A list of your transations below</h2>
     {transactions.map(({ _to, _from, _value }, i) => (
-      <li key={i}>
-        <ul>
-          <li><label>To: </label>{_to}</li>
-          <li><label>From: </label>{_from}</li>
-          <li><label>Value: </label>{_value.toString(10)}</li>
-        </ul>
-      </li>
+      <ul>
+        <li><label>Value: </label>{_value.toString(10)}</li>
+        <li><label>From: </label>{_from}</li>
+      </ul>
     ))}
   </ol>
 )
